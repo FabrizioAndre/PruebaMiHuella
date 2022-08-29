@@ -1,0 +1,187 @@
+<ion-app>
+  <ion-content>
+    <div class="container tab">
+      <form id="vehicPropioForm" (ngSubmit)="irSiguiente(vehicPropioForm)" #vehicPropioForm="ngForm">
+        <div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="text-center">Consumo de Agua en Vehículo</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <h6 class="text-center">¿Cuénta con vehículo?</h6>
+
+                <div class="d-flex justify-content-center">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr8" name="tieneVehiculo" class="custom-control-input" value="si"
+                      [(ngModel)]="vehicPropio.tieneVehiculo" #tieneVehiculo="ngModel" [ngClass]="{
+                        'is-invalid':
+                          vehicPropioForm.submitted && tieneVehiculo.invalid
+                      }" required />
+
+                    <label class="custom-control-label" for="cr8">Sí</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr9" name="tieneVehiculo" class="custom-control-input" value="no"
+                      [(ngModel)]="vehicPropio.tieneVehiculo" #tieneVehiculo="ngModel" [ngClass]="{
+                        'is-invalid':
+                          vehicPropioForm.submitted && tieneVehiculo.invalid
+                      }" required />
+                    <label class="custom-control-label" for="cr9">No</label>
+                  </div>
+                </div>
+
+                <div *ngIf="vehicPropio.tieneVehiculo == 'si'">
+                  <div class="form-group">
+                    <h6 class="text-center">
+                      Veces que lava su vehículo (veces/mes)
+                    </h6>
+
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="b1" (click)="Disminuir()">
+                        -
+                      </button>
+
+                      <input type="number" class="caja"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        id="vecesLava" name="vecesLava" [(ngModel)]="vehicPropio.vecesLava" #vecesLava="ngModel" min="0"
+                        pattern="^[0-9]{1,2}?$" maxlength="2" required [ngClass]="{
+                          'is-invalid':
+                            vehicPropioForm.submitted && vecesLava.invalid
+                        }" readonly="readonly" />
+
+                      <button type="button" class="b1" (click)="Aumentar()">
+                        +
+                      </button>
+                    </div>
+                    <small [hidden]="!vecesLava.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+
+                  <h6 class="text-center">
+                    ¿Qué utiliza para lavar su vehículo?
+                  </h6>
+
+                  <div class="d-flex justify-content-center">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="cr1" name="tipo" class="custom-control-input" value="manguera"
+                        [(ngModel)]="vehicPropio.tipoLava" #tipoLava="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            vehicPropioForm.submitted && tipoLava.invalid
+                        }" />
+
+                      <label class="custom-control-label" for="cr1">Manguera</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="cr2" name="tipo" class="custom-control-input" value="balde"
+                        [(ngModel)]="vehicPropio.tipoLava" #tipoLava="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            vehicPropioForm.submitted && tipoLava.invalid
+                        }" />
+                      <label class="custom-control-label" for="cr2">Balde</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="cr3" name="tipo" class="custom-control-input" value="autoservicio"
+                        [(ngModel)]="vehicPropio.tipoLava" #tipoLava="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            vehicPropioForm.submitted && tipoLava.invalid
+                        }" />
+                      <label class="custom-control-label" for="cr3">Autoservicio</label>
+                    </div>
+                  </div>
+
+                  <br />
+
+                  <div class="form-group" *ngIf="vehicPropio.tipoLava == 'manguera'">
+                    <label for="tiempoManguera" class="al">Minutos que descarga agua con la manguera</label>
+
+                    <div class="d-flex justify-content-center">
+                      <button type="button" class="b1" (click)="Disminuir2()">
+                        -
+                      </button>
+
+                      <input type="number" class="caja" id="tiempoManguera" name="tiempoManguera"
+                        [(ngModel)]="vehicPropio.tiempoManguera" #tiempoManguera="ngModel" min="0"
+                        pattern="^[0-9]{1,2}?$" maxlength="2" required [ngClass]="{
+                          'is-invalid':
+                            vehicPropioForm.submitted && tiempoManguera.invalid
+                        }" readonly="readonly" />
+
+                      <button type="button" class="b1" (click)="Aumentar2()">
+                        -
+                      </button>
+                    </div>
+                    <small [hidden]="!tiempoManguera.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+
+                  <div *ngIf="vehicPropio.tipoLava == 'balde'">
+                    <div class="form-group">
+                      <label class="al">Cantidad de baldes de agua utilizados</label>
+
+                      <div class="d-flex justify-content-center">
+                        <button type="button" class="b1" (click)="Disminuir3()">
+                          -
+                        </button>
+
+                        <input type="number" class="caja" id="cantBaldes" name="cantBaldes"
+                          [(ngModel)]="vehicPropio.cantBaldes" #cantBaldes="ngModel" min="0" pattern="^[0-9]{1,2}?$"
+                          maxlength="2" required [ngClass]="{
+                            'is-invalid':
+                              vehicPropioForm.submitted && cantBaldes.invalid
+                          }" readonly="readonly" />
+
+                        <button type="button" class="b1" (click)="Aumentar3()">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="volumenBalde" class="al">Volúmen del balde (Litros)</label>
+
+                      <div class="d-flex justify-content-center">
+                        <button type="button" class="b1" (click)="Disminuir4()">
+                          -
+                        </button>
+
+                        <input type="number" class="caja" id=" volumenBalde" name="volumenBalde"
+                          [(ngModel)]="vehicPropio.volumenBalde" #volumenBalde="ngModel" min="0" pattern="^[0-9]{1,2}?$"
+                          required maxlength="2" [ngClass]="{
+                            'is-invalid':
+                              vehicPropioForm.submitted && volumenBalde.invalid
+                          }" readonly="readonly" />
+
+                        <button type="button" class="b1" (click)="Aumentar4()">
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <app-alert></app-alert>
+          </div>
+          <hr />
+          <div class="card nuevo">
+            <div class="card-body">
+              <div class="bot1">
+                <button type="button" class="c1" (click)="irAnterior()">
+                  Anterior
+                </button>
+                <button type="submit" class="c2">Siguiente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-app>

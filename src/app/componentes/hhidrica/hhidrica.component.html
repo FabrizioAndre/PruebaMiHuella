@@ -1,0 +1,182 @@
+<div id="capture" style="background-color: white">
+  <br />
+  <div class="card" style="
+      box-shadow: 0px 4px 6px 6px rgba(217, 217, 217, 0.48);
+      border: 0;
+      margin-left: 6%;
+      margin-right: 6%;
+      border-radius: 20px;
+      background-image: linear-gradient(90deg, #87e0ff, #53c7f0);
+    ">
+    <div class="card-body">
+      <h4 style="
+          margin-top: -5px;
+          
+          font-weight: 800;
+        ">
+        Has consumido:
+      </h4>
+      <div class="d-flex justify-content-start">
+        <div class="align-self-end result">
+          <h1 class="result">
+            <strong>{{ totalAgua }}</strong>
+          </h1>
+        </div>
+        <div>
+          <h1 class="result2" style="margin-top: 43px; font-weight: 800">
+            <strong>m<sup>3</sup></strong>
+          </h1>
+        </div>
+      </div>
+      <div>
+        <p class="card-text" style="
+            margin-bottom: 49px;
+            
+            font-weight: 800;
+          ">
+          De agua al año
+        </p>
+      </div>
+
+      <p class="card-text" style="color: transparent; margin-top: 10px">
+        <i class="fas fa-info-circle"></i> Per cápita nacional: 5.44 tCO<sub>2</sub>
+        e/persona
+      </p>
+    </div>
+  </div>
+
+  <div class="family">
+    <div>
+      <div [ngStyle]="{ color: 'white' }"></div>
+
+      <div [ngStyle]="{
+          background: 'white',
+          border: '1px',
+          'border-radius': '20px',
+          'margin-right': '30px',
+          'margin-left': '30px',
+          'margin-top': '4%'
+        }">
+        <canvas style="margin-top: 49px" id="myChartHH" height="85vh" width="100vw"></canvas>
+        <br />
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center" style=" font-weight: 800">
+            Porcentajes
+          </h4>
+        </div>
+      </div>
+
+      <div [ngStyle]="{
+          border: '1px',
+          'border-radius': '20px',
+          'margin-right': '30px',
+          'margin-left': '30px',
+          'margin-top': '4%'
+        }">
+        <br />
+
+        <table class="t2" style="margin: 0 auto">
+          <tbody style="font-size: 18px">
+            <tr *ngIf="resultadoHH.hhAzul > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #87e0ff;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>Huella Azul</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoHH.hhAzul }} %</div>
+              </td>
+            </tr>
+            <tr *ngIf="resultadoHH.hhVerde > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #9ded77;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>Huella Verde</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoHH.hhVerde }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoHH.hhGris > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #4f4f4f;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>Huella Gris</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoHH.hhGris }} %</div>
+              </td>
+            </tr>
+            <tr *ngIf="resultadoHH.hhIndirecta > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #ffb835;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>Huella Indirecta&nbsp;&nbsp;</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoHH.hhIndirecta }} %</div>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <br />
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <br />
+  </div>
+</div>
+
+<div class="xyz">
+  <button type="button" (click)="Compartir()" style="font-size: 20px; color: gray"
+    class="btn btn-light btn-circle btn-xl">
+    <img style="width: 50px" src="../assets/img/share.svg" />
+  </button>
+</div>
+<br />

@@ -1,0 +1,135 @@
+<ion-content>
+  <div class="container col-md-6 ps-4 pe-4 mt-2">
+    <form id="consumoAguaForm" (ngSubmit)="irSiguiente(consumoAguaForm)" #consumoAguaForm="ngForm">
+      <div>
+        <div class="card-body">
+          <h5 class="text-center">Consumo de agua: Jardín / Piscina</h5>
+          <div class="row">
+            <div class="col-sm">
+              <label class="al">¿Tiene jardín? (Considerar maceteros)</label>
+              <div class="d-flex justify-content-center">
+                <div class="form-group">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr1" name="tieneJardin" class="custom-control-input" value="si"
+                      [(ngModel)]="consumoAgua.tieneJardin" #tieneJardin="ngModel" [ngClass]="{
+                        'is-invalid':
+                          consumoAguaForm.submitted && tieneJardin.invalid
+                      }" required />
+                    <label class="custom-control-label" for="cr1">Sí</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr2" name="tieneJardin" class="custom-control-input" value="no"
+                      [(ngModel)]="consumoAgua.tieneJardin" #tieneJardin="ngModel" [ngClass]="{
+                        'is-invalid':
+                          consumoAguaForm.submitted && tieneJardin.invalid
+                      }" required />
+                    <label class="custom-control-label" for="cr2">No</label>
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="consumoAgua.tieneJardin == 'si'">
+                <div class="form-group">
+                  <label class="al">Área promedio del jardín (m<sup>2</sup>)</label>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="b1" (click)="DisminuirArea()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="area" name="area" [(ngModel)]="consumoAgua.area" #area="ngModel"
+                      [ngClass]="{
+                        'is-invalid': consumoAguaForm.submitted && area.invalid
+                      }" required readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarArea()">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
+              <label class="al">¿Tiene piscina?</label>
+
+              <div class="d-flex justify-content-center">
+                <div class="form-group">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr4" name="tienePiscina" class="custom-control-input" value="si"
+                      [(ngModel)]="consumoAgua.tienePiscina" #tienePiscina="ngModel" [ngClass]="{
+                        'is-invalid':
+                          consumoAguaForm.submitted && tienePiscina.invalid
+                      }" required />
+                    <label class="custom-control-label" for="cr4">Sí</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr5" name="tienePiscina" class="custom-control-input" value="no"
+                      [(ngModel)]="consumoAgua.tienePiscina" #tienePiscina="ngModel" [ngClass]="{
+                        'is-invalid':
+                          consumoAguaForm.submitted && tienePiscina.invalid
+                      }" required />
+                    <label class="custom-control-label" for="cr5">No</label>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="consumoAgua.tienePiscina == 'si'">
+                <div class="form-group">
+                  <label class="al">Volúmen de la piscina (m<sup>3</sup>)</label>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="b1" (click)="DisminuirCon()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="volumen" name="volumen" [(ngModel)]="consumoAgua.volumen"
+                      #volumen="ngModel" [ngClass]="{
+                        'is-invalid':
+                          consumoAguaForm.submitted && volumen.invalid
+                      }" required readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarCon()">
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="al">Veces al año que llena la piscina con agua</label>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="b1" (click)="DisminuirConLLe()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="vecesLlenaPiscina" name="vecesLlenaPiscina"
+                      [(ngModel)]="consumoAgua.vecesLlenaPiscina" #vecesLlenaPiscina="ngModel" [ngClass]="{
+                        'is-invalid':
+                          consumoAguaForm.submitted && vecesLlenaPiscina.invalid
+                      }" required readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarConLLe()">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <app-alert></app-alert>
+        </div>
+
+        <div class="card nuevo">
+          <div class="card-body">
+            <div class="bot1">
+              <button type="button" class="c1" (click)="irAnterior()">
+                Anterior
+              </button>
+              <button type="submit" class="c2">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

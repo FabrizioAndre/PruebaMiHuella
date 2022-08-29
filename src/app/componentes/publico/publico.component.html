@@ -1,0 +1,89 @@
+<ion-content>
+  <div class="container tab">
+    <img src="../assets/img/bici.svg" width="80%" style="
+        margin-top: 120px;
+        margin-left: 10%;
+        margin-right: 10%;
+        -webkit-box-shadow: 0px 4px 12px -1px rgba(0, 0, 0, 0.33);
+        -moz-box-shadow: 0px 4px 12px -1px rgba(0, 0, 0, 0.33);
+        box-shadow: 0px 4px 12px -1px rgba(0, 0, 0, 0.33);
+        padding: 0.9em;
+        border-radius: 1em;
+      " />
+
+    <form id="tPublicoForm" (ngSubmit)="irSiguiente(tPublicoForm)" #tPublicoForm="ngForm">
+      <div>
+        <div class="card-body">
+          <br />
+          <div class="row">
+            <div style="margin-left: 25px">
+              <div class="form-group">
+                <div>
+
+                  <div class="form-group">
+
+                    <div class="form-check form-check-inline">
+                      <input type="radio" class="form-check-input" id="cSwith1" name="noUsoTransporte"
+                        [(ngModel)]="tPublico.noUsoTransporte" #noUsoTransporte="ngModel" value="si" required [ngClass]="{
+                          'is-invalid':
+                            tPublicoForm.submitted && noUsoTransporte.invalid
+                        }" />
+                      <label class=" form-check-label" for="cSwith1">Camino y/o uso bibicleta en mi día a día</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input type="radio" class="form-check-input" id="cSwith2" name="noUsoTransporte"
+                        [(ngModel)]="tPublico.noUsoTransporte" #noUsoTransporte="ngModel" value="no" required [ngClass]="{
+                          'is-invalid':
+                            tPublicoForm.submitted && noUsoTransporte.invalid
+                        }" />
+                      <label class="form-check-label" for="cSwith2">Uso otro medio de transporte diario</label>
+
+                    </div>
+                  </div>
+
+                  <!--
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="cSwith1" name="noUsoTransporte"
+                      [(ngModel)]="tPublico.noUsoTransporte" #noUsoTransporte="ngModel" value="si" required [ngClass]="{
+                        'is-invalid':
+                          tPublicoForm.submitted && noUsoTransporte.invalid
+                      }" />
+
+
+                    <label class="custom-control-label" for="cSwith1">Camino y/o uso bibicleta en mi día a día</label>
+                  </div>
+
+                  <br />
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="cSwith2" name="noUsoTransporte"
+                      [(ngModel)]="tPublico.noUsoTransporte" #noUsoTransporte="ngModel" value="no" required [ngClass]="{
+                        'is-invalid':
+                          tPublicoForm.submitted && noUsoTransporte.invalid
+                      }" />
+
+                    <label class="custom-control-label" for="cSwith2">Uso otro medio de transporte diario</label>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+        <br /><br />
+      </div>
+
+      <div class="card nuevo">
+        <div class="card-body">
+          <div class="bot1">
+            <button type="button" class="c1" (click)="irAnterior()">
+              Anterior
+            </button>
+            <button type="submit" class="c2">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

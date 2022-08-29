@@ -1,0 +1,101 @@
+<ion-app>
+  <ion-content>
+    <div class="container">
+      <div class="fondo">
+        <div class="titulo">
+          <br />
+          Mi Huella Personal
+        </div>
+        <div class="card" style="border: 0">
+          <div class="card-body">
+            <br />
+            <div>
+              <div class="bot">
+                <button type="button" class="b21" (click)="goStartHC()">
+                  <img class="pie" src="../assets/img/huella-white.svg" />
+
+                  <div class="mc">
+                    Mi Huella de
+                    <div style="white-space: pre-line"></div>
+                    Carbono
+                  </div>
+                </button>
+                <button type="button" class="b22" (click)="goStartHH()">
+                  <img class="pie" src="../assets/img/huella-white.svg" />
+                  <div class="mc">Mi Huella <br />Hídrica</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <button class="botonpri" (click)="goStart()">Realizar ambas</button>
+        </div>
+        <div class="cub">
+          <div class="titulo2">
+            <br />
+            ¿Cómo compensar?
+          </div>
+          <div class="boxes">
+            <div class=" card-body">
+              <div class="row justify-content-center">
+                <ion-text class="titulo2">Siembra un árbol</ion-text>
+              </div>
+              <div class="titulo3">
+                Al hacerlo, disminuyes las emiciones de CO<sub>2</sub>e
+                generadas en tus actividades diarias.
+              </div>
+              <div routerLink="/tarea1" class="titulo4">Ver más...</div>
+              <div style="text-align: center">
+                <img class="img2" src="../assets/img/parque.png" />
+              </div>
+            </div>
+          </div>
+          <div class="boxes">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <ion-text class="titulo2">Recicla</ion-text>
+              </div>
+              <div class="titulo3">
+                Al Reciclar estas convirtiendo tus desechos en nuevos productos
+              </div>
+              <div routerLink="/tarea2" class="titulo4">Ver más...</div>
+              <div style="text-align: center">
+                <img class="img2" src="../assets/img/reciclar.png" />
+              </div>
+            </div>
+          </div>
+          <div class="boxes">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <ion-text class="titulo2">Ahorra energía</ion-text>
+              </div>
+              <div class="titulo3">
+                Desenchufa los artefactos que no uses para ayudar al planeta
+              </div>
+              <div routerLink="/tarea3" class="titulo4">Ver más...</div>
+              <div style="text-align: center">
+                <img class="img2" src="../assets/img/enchufe.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br /><br />
+      </div>
+    </div>
+
+    <body>
+      <div class="navbar">
+        <div class="container" style="flex-direction: row">
+          <a routerLink="/nuevotab">
+            <i style="color: #90d26d; margin-left: 48px" class="fa-solid fa-house"></i></a>
+          <a routerLink="/analisis">
+            <img class="rotate" [ngStyle]="{ height: '50px' }" src="../assets/img/pie-chart.png" />
+          </a>
+          <a routerLink="/alwa"><i style="color: #cbcbcb; margin-right: 48px" class="fas fa-info-circle"></i></a>
+        </div>
+      </div>
+    </body>
+  </ion-content>
+
+</ion-app>

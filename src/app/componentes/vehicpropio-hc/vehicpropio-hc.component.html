@@ -1,0 +1,211 @@
+<ion-app>
+  <ion-content>
+    <div class="container tab">
+      <form id="tPublicoForm" (ngSubmit)="irSiguiente(tPublicoForm)" #tPublicoForm="ngForm">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="text-center">Vehículo</h5>
+            </div>
+          </div>
+          <div>
+            <div class="justify-content-center">
+              <div class="form-group">
+                <div>
+                  <div class="row justify-content-center">
+                    <label class="col-form-label col-form-label-sm">¿Tiene vehículo propio?</label>
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="cr8" name="tieneVehiculo" class="custom-control-input" value="si"
+                        [(ngModel)]="vehicPropio.tieneVehiculo" #tieneVehiculo="ngModel" [ngClass]="{
+                          'is-invalid':
+                            tPublicoForm.submitted && tieneVehiculo.invalid
+                        }" required />
+                      <label class="custom-control-label" for="cr8">Sí</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="cr9" name="tieneVehiculo" class="custom-control-input" value="no"
+                        [(ngModel)]="vehicPropio.tieneVehiculo" #tieneVehiculo="ngModel" [ngClass]="{
+                          'is-invalid':
+                            tPublicoForm.submitted && tieneVehiculo.invalid
+                        }" required />
+                      <label class="custom-control-label" for="cr9">No</label>
+                    </div>
+                  </div>
+                  <div *ngIf="vehicPropio.tieneVehiculo == 'si'">
+                    <div class="form-group">
+                      <div class="row justify-content-center">
+                        <label for="tipoVehiculo" class="col-form-label col-form-label-sm">¿Qué tipo de vehículo
+                          es?</label>
+                      </div>
+
+                      <div class="row justify-content-center">
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="cr1" name="tipoVehiculo" class="custom-control-input" value="auto"
+                            [(ngModel)]="vehicPropio.tipoVehiculo" #tipoVehiculo="ngModel" />
+                          <label class="custom-control-label" for="cr1">Auto</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                          <input type="radio" id="cr2" name="tipoVehiculo" class="custom-control-input"
+                            [(ngModel)]="vehicPropio.tipoVehiculo" #tipoVehiculo="ngModel" value="moto" />
+                          <label class="custom-control-label" for="cr2">Moto</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center">
+                      <label for="tipoCombustible" class="col-form-label col-form-label-sm">Tipo de combustible</label>
+                    </div>
+
+                    <div class="row justify-content-center">
+                      <select class="col-md-2 form-control form-control-sm" style="text-align: center"
+                        id="tipoCombustible" name="tipoCombustible" [(ngModel)]="vehicPropio.tipoCombustible"
+                        #tipoCombustible="ngModel">
+                        <option [ngValue]="item.codigo_parametros" *ngFor="let item of lstTipoCombustible">
+                          {{ item.valor_parametros }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="row justify-content-center">
+                      <label for="tipoConsumo" class="col-form-label col-form-label-sm">Conozco mi consumo en:</label>
+                    </div>
+                    <div class="row justify-content-center">
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="cr3" name="tipoConsumo" class="custom-control-input" value="soles"
+                          [(ngModel)]="vehicPropio.tipoConsumo" #tipoConsumo="ngModel" />
+                        <label class="custom-control-label" for="cr3">PEN</label>
+                      </div>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="cr4" name="tipoConsumo" class="custom-control-input" value="gal"
+                          [(ngModel)]="vehicPropio.tipoConsumo" #tipoConsumo="ngModel" />
+                        <label class="custom-control-label" for="cr4">Galones</label>
+                      </div>
+                    </div>
+                    <div class="row justify-content-center">
+                      <input type="number" style="text-align: center"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        class="col-md-2 form-control form-control-sm" id="valorConsumo" name="valorConsumo"
+                        [(ngModel)]="vehicPropio.valorConsumo" #valorConsumo="ngModel" maxlength="4"
+                        pattern="^[0-9]+(.[0-9]{1,2})?$" />
+                    </div>
+
+                    <div class="text-center">
+                      <small class="unidad" *ngIf="vehicPropio.tipoConsumo == 'soles'">soles/mes</small>
+                      <small class="unidad" *ngIf="vehicPropio.tipoConsumo == 'gal'">gal/mes</small>
+                    </div>
+                    <small [hidden]="!valorConsumo.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+                  <br />
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <label class="col-form-label col-form-label-sm">Tipo de transporte público que usa con
+                        frecuencia</label>
+                    </div>
+                    <div class="row justify-content-center">
+                      <select class="col-md-2 form-control form-control-sm" id="tipoTransporte" name="tipoTransporte"
+                        [(ngModel)]="tPublico.tipoTransporte" #tipoTransporte="ngModel">
+                        <option [ngValue]="item.codigo_parametros" *ngFor="let item of lstTipoTransporte">
+                          {{ item.valor_parametros }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <label class="col-form-label col-form-label-sm">En 1 semana viaja</label>
+                    </div>
+                    <div class="row justify-content-center">
+                      <input type="number" style="text-align: center"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        class="col-md-2 form-control form-control-sm" id="veces" name="veces"
+                        [(ngModel)]="tPublico.veces" #veces="ngModel" maxlength="3" pattern="^[0-9]{1,3}?$" />
+                    </div>
+                    <small [hidden]="!veces.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <label for="tiempo" class="col-form-label col-form-label-sm">Tiempo por viaje (min/viaje)</label>
+                    </div>
+                    <div class="row justify-content-center">
+                      <input type="number" style="text-align: center"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        class="col-md-2 form-control form-control-sm" id="tiempo" name="tiempo"
+                        [(ngModel)]="tPublico.tiempo" #tiempo="ngModel" maxlength="3" pattern="^[0-9]{1,3}?$" />
+                    </div>
+                    <small [hidden]="!tiempo.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+
+                  <br />
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <label for="vecesTaxi" class="col-form-label col-form-label-sm">Veces a la semana que usa
+                        taxi</label>
+                    </div>
+
+                    <div class="row justify-content-center">
+                      <input type="number" style="text-align: center"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        class="col-md-2 form-control form-control-sm" id="vecesTaxi" name="vecesTaxi"
+                        [(ngModel)]="tPublico.vecesTaxi" #vecesTaxi="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" />
+                    </div>
+                    <small [hidden]="!vecesTaxi.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+                  <div class="form-group">
+                    <div class="row justify-content-center">
+                      <label for="montoTaxi" class="col-form-label col-form-label-sm">Monto promedio por viaje
+                        (PEN)</label>
+                    </div>
+                    <div class="row justify-content-center">
+                      <input type="number" style="text-align: center"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        class="col-md-2 form-control form-control-sm" id="montoTaxi" name="montoTaxi"
+                        [(ngModel)]="tPublico.montoTaxi" #montoTaxi="ngModel" maxlength="4"
+                        pattern="^[0-9]+(.[0-9]{1,2})?$" />
+                    </div>
+                    <small [hidden]="!montoTaxi.errors?.pattern" class="text-danger">
+                      <i class="fas fa-exclamation-circle"></i> Ingrese un
+                      número válido.
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br /><br /><br /><br /><br />
+        </div>
+
+        <div class="card nuevo">
+          <div class="card-body">
+            <div class="bot1">
+              <button type="button" class="c1" (click)="irAnterior()">
+                Anterior
+              </button>
+
+              <button type="submit" class="c2" *ngIf="!viewButton">
+                Siguiente
+              </button>
+
+              <button type="submit" class="c2" *ngIf="viewButton" [disabled]="loading">
+                Finalizar
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-app>

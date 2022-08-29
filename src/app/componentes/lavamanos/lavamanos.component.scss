@@ -1,0 +1,164 @@
+.no-scroll .scroll-content {
+  overflow: hidden;
+}
+
+.fa-info-circle {
+  color: rgb(8, 142, 175);
+}
+
+label {
+
+  font-weight: 400;
+}
+
+h5,
+h1 {
+
+  font-weight: 700;
+
+}
+
+.nuevo {
+  border: 0;
+  left: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+  border-color: #90d26d !important;
+  background-color: #90d26d !important;
+}
+
+.container {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.container {
+  max-width: 600px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper input[type="checkbox"] {
+  font-weight: 400;
+
+  font-size: 20px;
+  width: 120px;
+  height: 32px;
+  color: #ffffff;
+  background-color: #d9d9d9;
+  -webkit-appearance: none;
+  border-radius: 43px;
+  outline: none;
+  position: relative;
+}
+
+.wrapper input[type="checkbox"]:before {
+  content: "No";
+  z-index: 20;
+  position: absolute;
+  width: 66px;
+  height: 32px;
+  border-radius: 4em/4em;
+  line-height: 32px;
+  text-align: center;
+
+  background-color: #90d26d;
+  left: 54px;
+  top: 0px;
+  transition-duration: 0.2s;
+}
+
+.wrapper input:checked[type="checkbox"] {
+  background-color: #d9d9d9;
+}
+
+.wrapper input:checked[type="checkbox"]:before {
+  z-index: 20;
+  content: "Si";
+  background-color: #90d26d;
+  left: 0;
+  transition-duration: 0.2s;
+  color: #ffffff;
+}
+
+.al {
+  display: block;
+  text-align: center;
+  line-height: 150%;
+}
+
+.caja {
+  text-align: center;
+  outline: none;
+  width: 50px;
+
+
+  font-size: 50px;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: -0.625rem 13.75rem;
+  /*     font-size: 1.1rem; */
+  font-size: 18px;
+
+  border: 0;
+  color: black;
+  background-color: #fff;
+  background-clip: padding-box;
+
+  border-radius: 0.25rem;
+}
+
+.card {
+  border: 0px;
+}
+
+.unidad {
+  color: #2936ad;
+  margin-left: -62px;
+}
+
+.col-form-label-sm {
+  padding-top: calc(0.25rem + 1px);
+  padding-bottom: calc(0.25rem + 1px);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.form-control-sm {
+  height: calc(1.5em + 0.5rem + 2px);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+
+  margin-right: 20%;
+
+  /*   text-align: center; */
+}
+
+.form-control {
+  width: 120px;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

@@ -1,0 +1,65 @@
+<ion-app>
+  <ion-content>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <div class="container tab">
+      <div class="col text-right">
+        <ion-icon routerLink="/" [ngStyle]="{
+            'font-size': '30px',
+            'margin-top': '15px',
+            'margin-right': '-10px'
+          }" name="close">
+        </ion-icon>
+      </div>
+
+      <div>
+        <div style="
+            font-weight: 480;
+            font-size: 30px;
+            color: black;
+            text-align: center;
+            
+            font-weight: 700;
+          ">
+          Resultados
+        </div>
+
+        <div *ngIf="hCarbono && !hHidrica" style="margin-top: -21px">
+          <br />
+          <app-hcarbono></app-hcarbono>
+        </div>
+
+        <div *ngIf="hHidrica && !hCarbono" style="margin-top: -21px">
+          <br />
+          <app-hhidrica></app-hhidrica>
+        </div>
+
+        <div *ngIf="hCarbono && hHidrica">
+          <div>
+            <div class="card" style="border: 0; margin-left: 2%; margin-right: 2%">
+              <div class="card-body">
+                <div class="bot1">
+                  <button type="button" style="outline: none" class="d1" (click)="switch_div(1)">
+                    Mi Huella de Carbono
+                  </button>
+
+                  <button type="button" style="outline: none" class="d2" (click)="switch_div(2)">
+                    Mi Huella Hídrica
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="content" id="show_1" style="margin-top: -21px">
+              <app-hcarbono></app-hcarbono>
+            </div>
+            <div class="content hide" id="show_2" style="margin-top: -21px">
+              <app-hhidrica></app-hhidrica>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

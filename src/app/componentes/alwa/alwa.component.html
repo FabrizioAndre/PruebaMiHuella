@@ -1,0 +1,107 @@
+<ion-app>
+  <ion-content no-bounce class="no-scroll">
+    <div class="container">
+      <div id="capture">
+        <br />
+
+        <img class="logo" src="../assets/img/Alwa.jpg" />
+
+        <div>
+          <div [ngStyle]="{
+              'margin-top': '8px',
+              'font-weight': '480',
+              'font-size': '25px',
+              color: 'black',
+              'margin-left': '10%'
+              
+            }">
+            <br />
+          </div>
+
+          <div class="card" style="
+              background: #ffffff;
+              border: 1px;
+              border-radius: 20px;
+              margin-right: 6%;
+              margin-left: 6%;
+              margin-top: 4%;
+            ">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <ion-text class="titulo2">Sobre nosotros</ion-text>
+              </div>
+
+              <div class="consulta">
+                Somos una consultora especializada al servicio del Desarrollo
+                Sostenible Ambiental.
+                <div style="white-space: pre-line"></div>
+                Estamos comprometidos con el cliente para un verdadero
+                crecimiento sostenible, en armonía con el medio ambiente.
+              </div>
+            </div>
+          </div>
+
+          <div class="card" class="sombra" style="
+              background: #ffffff;
+              border: 1px;
+              border-radius: 30px;
+              margin-right: 10%;
+              margin-left: 10%;
+              margin-top: 10%;
+            ">
+            <div class="card-body">
+              <div class="row justify-content-center">
+                <ion-text class="titulo2">Contáctanos</ion-text>
+              </div>
+
+              <div style="
+                  font-size: 1em;
+                  text-align: center;
+                  
+                  margin-left: 10px;
+
+                  margin-right: 10px;
+                "></div>
+
+              <div class="row justify-content-center">
+                <div style="
+                    font-size: 18px;
+                    
+                    margin-top: 10px;
+                  ">
+                  <a href="https://alwa.pe/" class="titulo3"> www.alwa.pe</a>
+                </div>
+              </div>
+
+              <div class="row justify-content-center">
+                <a href="mailto:info@alwa.pe?Subject=SERVICIO%20DE%20AYUDA%20DE%20ALWA" class="titulo3">
+                  info@alwa.pe
+                </a>
+              </div>
+
+              <div class="row justify-content-center">
+                <a class="titulo3" href="tel:+51951114333"> +51 951 114 333</a>
+              </div>
+              <br />
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
+
+    <div class="navbar">
+      <div class="container" style="flex-direction: row">
+        <a routerLink="/">
+          <i style="color: #cbcbcb; margin-left: 48px" class="fa-solid fa-house"></i></a>
+        <a routerLink="/analisis">
+          <img class="rotate" [ngStyle]="{ height: '50px' }" src="../assets/img/pie-chart.png" />
+        </a>
+        <a routerLink="/alwa"><i style="color: #0066d3; margin-right: 48px" class="fas fa-info-circle"></i></a>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

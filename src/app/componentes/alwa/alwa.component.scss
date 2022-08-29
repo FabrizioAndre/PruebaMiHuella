@@ -1,0 +1,151 @@
+.sombra {
+
+  box-shadow: 1px 0px 10px -2px rgb(0 0 0 / 27%);
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin-left: 10%;
+
+}
+
+
+.logo {
+  height: 120px;
+  margin-top: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.flex-row .flex-child-b3 {
+  flex: 0.5;
+}
+
+
+.todob {
+  text-align: center;
+  font-size: 14px;
+}
+
+.boton1 {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  border-radius: 100px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  margin: 10px 5px;
+  box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.6);
+  background: #92D050;
+
+}
+
+
+.boton2 {
+  text-align: center;
+  width: 170px;
+  text-decoration: none;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  display: inline-block;
+  color: black;
+  border-radius: 100px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  margin: 10px 5px;
+  box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.6);
+  background: white;
+
+}
+
+
+body {
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 1px 0px 6px 0px rgb(0 0 0 / 12%);
+  padding: 0;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #000;
+  text-align: center;
+
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+  height: 1500px;
+
+}
+
+.titulo2 {
+  font-size: 19px;
+
+  font-weight: 600;
+  color: black;
+}
+
+.titulo3 {
+  font-size: 19px;
+
+  color: black;
+}
+
+.consulta {
+  text-align: center;
+
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 3%;
+}
+
+i {
+  font-size: 35px;
+}
+
+.titulo {
+  font-weight: 480;
+  font-size: 30px;
+  color: black;
+  text-align: center;
+
+  font-weight: 700;
+}
+
+
+.container {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.flex-row {
+
+  font-weight: 400;
+}

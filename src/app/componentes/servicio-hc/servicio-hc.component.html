@@ -1,0 +1,71 @@
+<ion-content>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="form-group">
+          <form id="servPublicoForm" (ngSubmit)="irSiguiente(servPublicoForm)" #servPublicoForm="ngForm">
+            <div>
+              <div class="form-group">
+                <div class="row justify-content-center">
+                  <label class="col-form-label col-form-label-sm">Tipo de transporte público que usa con
+                    frecuencia</label>
+                </div>
+
+                <div class="row justify-content-center">
+                  <select class="col-sm-4 form-control form-control-sm" id="tipoTransporte" name="tipoTransporte"
+                    [(ngModel)]="tPublico.tipoTransporte" #tipoTransporte="ngModel">
+                    <option [ngValue]="item.codigo_parametros" *ngFor="let item of lstTipoTransporte">
+                      {{ item.valor_parametros }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row justify-content-center">
+                  <label class="col-form-label col-form-label-sm">En 1 semana viaja</label>
+                </div>
+
+                <div class="row justify-content-center">
+                  <input type="number"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    class="col-md-2 form-control form-control-sm" id="veces" name="veces" [(ngModel)]="tPublico.veces"
+                    #veces="ngModel" maxlength="3" pattern="^[0-9]{1,3}?$" />
+                </div>
+
+                <small [hidden]="!veces.errors?.pattern" class="text-danger">
+                  <i class="fas fa-exclamation-circle"></i> Ingrese un número
+                  válido.
+                </small>
+              </div>
+              <div class="form-group">
+                <div class="row justify-content-center">
+                  <label for="tiempo" class="col-form-label col-form-label-sm">Tiempo por viaje</label>
+                </div>
+                <div class="row justify-content-center">
+                  <input type="number"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    class="col-md-2 form-control form-control-sm" id="tiempo" name="tiempo"
+                    [(ngModel)]="tPublico.tiempo" #tiempo="ngModel" maxlength="3" pattern="^[0-9]{1,3}?$" />
+                </div>
+                <small [hidden]="!tiempo.errors?.pattern" class="text-danger">
+                  <i class="fas fa-exclamation-circle"></i> Ingrese un número
+                  válido.
+                </small>
+              </div>
+            </div>
+
+            <div class="card-footer text-muted text-center">
+              <button type="button" class="btn btn-success" style="margin-right: 10px" (click)="irAnterior()">
+                <i class="fas fa-chevron-left"></i> Anterior
+              </button>
+
+              <button type="submit" style="margin-left: 0.5em" class="btn btn-success">
+                Siguiente
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

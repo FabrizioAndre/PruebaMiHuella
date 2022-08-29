@@ -1,0 +1,130 @@
+<ion-content>
+  <div class="container col-md-6 ps-4 pe-4 mt-2">
+    <form id="areoForm" (ngSubmit)="addItem(aereoForm)" #aereoForm="ngForm">
+      <div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="text-center">
+                Indique las rutas que realiza en sus viajes aéreos (nacional)
+              </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="origen" class="col-form-label col-form-label-sm">Origen:</label>
+
+                  <select class="col-md-7 form-control form-control-sm" id="origen" name="origen"
+                    [(ngModel)]="aereo.origen" #origen="ngModel" required
+                    [ngClass]="{ 'is-invalid': submit && origen.invalid }" (change)="fnDestino()">
+                    <option [ngValue]="item.iata_origen" *ngFor="let item of lstOrigen">
+                      {{ item.origen }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="destino" class="col-form-label col-form-label-sm">Destino:</label>
+                <select class="col-md-7 form-control form-control-sm" id="destino" name="destino"
+                  [(ngModel)]="aereo.destino" #destino="ngModel" [ngClass]="{ 'is-invalid': submit && destino.invalid }"
+                  required>
+                  <option [ngValue]="item" *ngFor="let item of lstDestino">
+                    {{ item.destino }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md">
+                  <h6 class="text-center">Veces que viaja (veces/año)</h6>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="b1" (click)="Disminuir()">
+                      -
+                    </button>
+                    <input type="text"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      class="caja" id="veces" name="veces" [(ngModel)]="aereo.veces" #veces="ngModel"
+                      readonly="readonly" maxlength="3" pattern="^[0-9]{1,3}?$" required
+                      [ngClass]="{ 'is-invalid': submit && veces.invalid }" />
+
+                    <button type="button" class="b1" (click)="Aumentar()">
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row justify-content-center" style="margin-top: 15px">
+                <button type="submit" class="botonpri">Agregar</button>
+              </div>
+
+              <hr />
+              <div class="form-group">
+                <div class="table-responsive-sm">
+                  <table class="table table-hover">
+                    <thead class="thead-light">
+                      <tr style="background-color: #342b2b">
+                        <th scope="col" style="
+                            background-color: #342b2b;
+                            color: white;
+                            border-bottom-left-radius: 2em;
+                            border-top-left-radius: 2em;
+                          ">
+                          Tramo
+                        </th>
+                        <th scope="col" style="background-color: #342b2b; color: white">
+                          Distancia (km)
+                        </th>
+                        <th scope="col" style="
+                            background-color: #342b2b;
+                            color: white;
+                            border-bottom-right-radius: 2em;
+                            border-top-right-radius: 2em;
+                          ">
+                          Veces que viajé
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="
+                          let item of lstViaje
+                            | slice
+                              : (page - 1) * pageSize
+                              : (page - 1) * pageSize + pageSize
+                        ">
+                        <th class="text-center" scope="row">
+                          {{ item.tramo }}
+                        </th>
+                        <td class="text-center">{{ item.distancia }}</td>
+                        <td class="text-center">{{ item.veces }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="d-flex justify-content-center" style="z-index: 0; color: black">
+                  <ngb-pagination class="nue" style="z-index: 0; color: black" [collectionSize]="total" [(page)]="page"
+                    [pageSize]="pageSize">
+                  </ngb-pagination>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card nuevo">
+          <div class="card-body">
+            <div class="bot1">
+              <button type="button" class="c1" (click)="irAnterior()">
+                Anterior
+              </button>
+              <button type="button" (click)="irSiguiente()" class="c2">
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

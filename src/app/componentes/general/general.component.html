@@ -1,0 +1,102 @@
+<ion-content>
+  <div class="container col-md-6 ps-4 pe-4 mt-2">
+    <form id="generalForm" (ngSubmit)="irSiguiente(generalForm)" #generalForm="ngForm">
+      <div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4>Seleccione su lugar de residencia:</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="departamento" class="col-form-label col-form-label-sm">Departamento:</label>
+                <select class="form-control form-control-sm" id="departamento" name="departamento"
+                  [(ngModel)]="general.departamento" #departamento="ngModel" (change)="fnProvincia()" [ngClass]="{
+                    'is-invalid': generalForm.submitted && departamento.invalid
+                  }" required>
+                  <option [ngValue]="item.cod_depto" *ngFor="let item of lstDepartamento">
+                    {{ item.departamento }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="provincia" class="col-form-label col-form-label-sm">Provincia:</label>
+                <select class="form-control form-control-sm" id="provincia" name="provincia"
+                  [(ngModel)]="general.provincia" #provincia="ngModel" (change)="fnDistrito()" [ngClass]="{
+                    'is-invalid': generalForm.submitted && provincia.invalid
+                  }" required>
+                  <option [ngValue]="item.cod_prov" *ngFor="let item of lstProvincia">
+                    {{ item.provincia }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="distrito" class="col-form-label col-form-label-sm">Distrito:</label>
+                <select class="form-control form-control-sm" id="distrito" name="distrito"
+                  [(ngModel)]="general.distrito" #distrito="ngModel" [ngClass]="{
+                    'is-invalid': generalForm.submitted && distrito.invalid
+                  }" required>
+                  <option [ngValue]="item.cod_dist" *ngFor="let item of lstDistrito">
+                    {{ item.distrito }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="edad" class="col-form-label col-form-label-sm">¿Qué edad tienes?</label>
+                <input type="number"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  class="form-control form-control-sm" id="edad" name="edad" [(ngModel)]="general.edad" #edad="ngModel"
+                  maxlength="2" pattern="^[0-9]{1,2}?$" [ngClass]="{
+                    'is-invalid': generalForm.submitted && edad.invalid
+                  }" required />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 ">
+              <div class="form-group">
+                <label for="habitantes" class="col-form-label col-form-label-sm">¿Cuántas personas viven en tu
+                  casa?</label>
+
+                <input type="number"
+                  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  class="form-control form-control-sm" id="habitantes" name="habitantes"
+                  [(ngModel)]="general.habitantes" #habitantes="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$"
+                  [ngClass]="{
+                    'is-invalid': generalForm.submitted && habitantes.invalid
+                  }" required />
+
+                <small class="form-text text-muted" style="color: #0066d3"><i class="fas fa-info-circle"></i> Considerar
+                  los últimos 12
+                  meses</small>
+              </div>
+            </div>
+          </div>
+
+          <app-alert></app-alert>
+          <br /><br />
+          <br /><br />
+        </div>
+      </div>
+      <div class="card nuevo">
+        <div class="card-body">
+          <div class="bot1">
+            <button type="button" routerLink="/" class="c1">Anterior</button>
+
+            <button type="submit" class="c2">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

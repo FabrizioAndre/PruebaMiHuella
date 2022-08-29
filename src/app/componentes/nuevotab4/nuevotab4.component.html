@@ -1,0 +1,60 @@
+<ion-app>
+  <ion-content>
+    <div class="container">
+      <div class="titulo">
+        <br />
+        Mi Análisis
+      </div>
+
+      <div class="card" style="border: 0; margin-left: 2%; margin-right: 2%">
+        <div class="card-body">
+          <div class="bot1">
+            <button type="button" routerLink="/analisis" class="d1">
+              Mi Huella de Carbono
+            </button>
+
+            <button type="button" style="outline: none; border: none" class="d2" routerLink="/nuevotab4">
+              Mi Huella Hídrica
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="+totalAgua > 0" style="margin-top: -21px">
+        <app-hhidrica></app-hhidrica>
+      </div>
+
+      <div *ngIf="+totalAgua == 0">
+        <div style="
+            margin-top: 15%;
+            margin-right: 10%;
+            margin-left: 10%;
+
+          ">
+          <label>Usted no ha realizado su calculo Huella de Hídrica, por favor
+            realícela
+            <label style="color: #0ac2fa" (click)="goStartHH()">
+              aquí
+            </label>
+          </label>
+        </div>
+      </div>
+
+      <br />
+      <br /><br />
+    </div>
+
+    <div class="navbar">
+      <div class="container" style="flex-direction: row">
+        <a routerLink="/">
+          <i style="color: #cbcbcb; margin-left: 48px" class="fa-solid fa-house"></i></a>
+
+        <a routerLink="/analisis">
+          <img class="rotate" [ngStyle]="{ height: '50px' }" src="../assets/img/pie-chart.png" />
+        </a>
+
+        <a routerLink="/alwa"><i style="color: #cbcbcb; margin-right: 48px" class="fas fa-info-circle"></i></a>
+      </div>
+    </div>
+  </ion-content>
+</ion-app>

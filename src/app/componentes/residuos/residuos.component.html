@@ -1,0 +1,205 @@
+<ion-content>
+  <div class="container col-md-6 ps-4 pe-4 mt-2">
+    <form id="residuoForm" (ngSubmit)="irFinalizar(residuoForm)" #residuoForm="ngForm">
+      <div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="text-center">
+                Indique la cantidad de bolsas de basura que genera a la semana
+              </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <h6 class="text-center">
+                  Bolsas de basura (unidades/semana)
+                </h6>
+
+                <div class="row justify-content-center">
+                  <input type="number" style="text-align: center"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    class="col-4 form-control form-control-sm center" id="cantidadBolsa" name="cantidadBolsa"
+                    [(ngModel)]="residuos.cantidadBolsa" #cantidadBolsa="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$"
+                    required [ngClass]="{
+                        'is-invalid':
+                          residuoForm.submitted && cantidadBolsa.invalid
+                      }" />
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <h5 style=" font-weight: 400">
+                  Tipo de bolsa
+                </h5>
+              </div>
+
+              <br />
+
+              <div class="row justify-content-center" style="margin-right: 2%; margin-left: 2%">
+                <div class="col" style="padding-left: 0px">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="cr6" name="tipoBolsa" class="custom-control-input" value="15"
+                      [(ngModel)]="residuos.tipoBolsa" #tipoBolsa="ngModel" [ngClass]="{
+                          'is-invalid':
+                            residuoForm.submitted && tipoBolsa.invalid
+                        }" />
+                    <label class="custom-control-label" for="cr6">15 L</label>
+                  </div>
+                </div>
+
+                <div class="col" style="padding-left: 0px">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="cr1" name="tipoBolsa" class="custom-control-input" value="25"
+                      [(ngModel)]="residuos.tipoBolsa" #tipoBolsa="ngModel" [ngClass]="{
+                          'is-invalid':
+                            residuoForm.submitted && tipoBolsa.invalid
+                        }" />
+                    <label class="custom-control-label" for="cr1">25 L</label>
+                  </div>
+                </div>
+
+                <div class="col" style="padding-left: 0px">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="cr2" name="tipoBolsa" class="custom-control-input" value="50"
+                      [(ngModel)]="residuos.tipoBolsa" #tipoBolsa="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            residuoForm.submitted && tipoBolsa.invalid
+                        }" />
+                    <label class="custom-control-label" for="cr2">50 L</label>
+                  </div>
+                </div>
+
+                <div class="col" style="padding-left: 0px">
+                  <div class="custom-control custom-radio">
+                    <input type="radio" id="cr3" name="tipoBolsa" class="custom-control-input" value="75"
+                      [(ngModel)]="residuos.tipoBolsa" #tipoBolsa="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            residuoForm.submitted && tipoBolsa.invalid
+                        }" />
+                    <label class="custom-control-label" for="cr3">75 L</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm">
+              <h4 for="composicion" style="text-align: center" class="col-form-label col-form-label-sm">
+                ¿Podría indicar la composición de sus residuos sólidos?
+              </h4>
+              <div class="row justify-content-center">
+                <div class="form-group">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr4" name="composicion" class="custom-control-input" value="si"
+                      [(ngModel)]="residuos.composicion" #composicion="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            residuoForm.submitted && composicion.invalid
+                        }" />
+                    <label class="custom-control-label" for="cr4">Si</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="cr5" name="composicion" class="custom-control-input" value="no"
+                      [(ngModel)]="residuos.composicion" #composicion="ngModel" required [ngClass]="{
+                          'is-invalid':
+                            residuoForm.submitted && composicion.invalid
+                        }" />
+                    <label class="custom-control-label" for="cr5">No</label>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="form-group" *ngIf="residuos.composicion == 'si'">
+                <div class="table-responsive-sm">
+                  <table class="table table-hover">
+                    <thead class="thead-light">
+                      <tr style="background-color: #342b2b">
+                        <th colspan="2" style="
+                              font-size: 14px;
+                              background-color: #342b2b;
+                              color: white;
+                              border-bottom-left-radius: 2em;
+                              border-top-left-radius: 2em;
+                              border-bottom-right-radius: 2em;
+                              border-top-right-radius: 2em;
+                            ">
+                          Tipo de residuo / Porcentaje de composición
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of lstResiduos">
+                        <th style="vertical-align: middle">
+                          <label style="
+                                margin-left: 30px;
+                                vertical-align: middle;
+                                font-size: 14px;
+                                font-weight: 400;
+                              ">{{ item.valor_parametros }}</label>
+                        </th>
+
+                        <td class="text-center">
+                          <div class="row justify-content-center">
+                            <div class="col-5">
+                              <input [ngModelOptions]="{ standalone: true }" type="number" name="porcentaje"
+                                style="display: inherit; text-align: center" class="form-control" [ngClass]="{
+                                    'is-invalid': item.porcentaje > 100
+                                  }" [(ngModel)]="item.porcentaje" />
+                            </div>
+                            <label style="
+                                  margin-left: 4px;
+                                  margin-top: 5.5px;
+                                  vertical-align: middle;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                ">
+                              %
+                            </label>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th class="text-right"></th>
+                        <th class="text-center">
+                          <small style="font-size: 14px; font-weight: 300"><strong>{{ fnGetTotalComposicion() }}
+                              %</strong></small><br />
+                          <small [hidden]="
+                                fnGetTotalComposicion() == 0 ||
+                                fnGetTotalComposicion() == 100
+                              " class="text-danger">
+                            Total de composici&oacute;n debe ser
+                            <strong>100 %</strong>
+                          </small>
+                        </th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+              <div>
+                <app-alert> </app-alert>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+      </div>
+
+      <div class="card nuevo">
+        <div class="card-body">
+          <div class="bot1">
+            <button type="button" class="c1" (click)="irAnterior()">
+              Anterior
+            </button>
+
+            <button type="submit" class="c2">Finalizar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br />
+</ion-content>

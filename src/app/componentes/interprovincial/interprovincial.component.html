@@ -1,0 +1,182 @@
+<ion-content>
+  <div class="container col-md-4 ps-4 pe-4 mt-2">
+    <form id="interprovForm" (ngSubmit)="addItem(interprovForm)" #interprovForm="ngForm">
+      <div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="text-center">
+                Indique el consumo que realiza en sus viajes interprovinciales
+              </h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="tipoTransporte" class="col-form-label col-form-label-sm">Tipo de transporte para cada
+                  destino que visitó:</label>
+                <select class="col-md-7 form-control form-control-sm" id="tipoTransporte" name="tipoTransporte"
+                  [(ngModel)]="interprov.tipoTransporte" #tipoTransporte="ngModel"
+                  [ngClass]="{ 'is-invalid': submit && tipoTransporte.invalid }" required>
+                  <option [ngValue]="item" *ngFor="let item of lstTipoTransporte">
+                    {{ item.valor_parametros }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tipoConsumo" class="col-form-label col-form-label-sm">Conozco mi consumo por:</label>
+                <div class="form-group">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" (click)="clearSearch()" id="cr3" name="tipoConsumo" class="custom-control-input"
+                      [value]="1" [(ngModel)]="interprov.tipoConsumo" #tipoConsumo="ngModel" [ngClass]="{
+                        'is-invalid': submit && tipoConsumo.invalid
+                      }" />
+
+                    <label class="custom-control-label" for="cr3">Distancia</label>
+                  </div>
+
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" (click)="clearSearch()" id="cr4" name="tipoConsumo" class="custom-control-input"
+                      value="tiempo" [(ngModel)]="interprov.tipoConsumo" #tipoConsumo="ngModel" [ngClass]="{
+                        'is-invalid': submit && tipoConsumo.invalid
+                      }" required />
+                    <label class="custom-control-label" for="cr4">Tiempo</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div>
+                  <div *ngIf="interprov.tipoConsumo == '1'">
+                    <input type="number"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      class="col-md-7 form-control form-control-sm" id="valorConsumo" name="valorConsumo"
+                      [(ngModel)]="interprov.valorConsumo" #valorConsumo="ngModel" maxlength="4"
+                      pattern="^[0-9]+(.[0-9]{1,2})?$" [ngClass]="{
+                        'is-invalid': submit && valorConsumo.invalid
+                      }" />
+                    <small class="unidad">km/viaje</small>
+                  </div>
+
+                  <div *ngIf="interprov.tipoConsumo == 'tiempo'">
+                    <input type="number"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      class="col-md-7 form-control form-control-sm" id="valorConsumo" name="valorConsumo"
+                      [(ngModel)]="interprov.valorConsumo" #valorConsumo="ngModel" value="0" maxlength="2"
+                      pattern="^[0-9]+(.[0-9]{1,2})?$" [ngClass]="{
+                        'is-invalid': submit && valorConsumo.invalid
+                      }" />
+                    <small class="unidad">horas/viaje</small>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <h6 class="text-center">Veces que viaja (veces/año)</h6>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="b1" (click)="Disminuir()">
+                    -
+                  </button>
+
+                  <input type="text" readonly="readonly"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    class="caja" id="veces" name="veces" [(ngModel)]="interprov.veces" #veces="ngModel" maxlength="2"
+                    pattern="^[0-9]{1,2}?$" required [ngClass]="{ 'is-invalid': submit && veces.invalid }" />
+
+                  <button type="button" class="b1" (click)="Aumentar()">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="row justify-content-center" style="margin-top: 15px">
+                <button type="submit" class="botonpri">Agregar</button>
+              </div>
+
+              <br />
+              <div class="form-group">
+                <div class="table-responsive-sm">
+                  <table class="table table-hover">
+                    <thead class="thead-light" style="background-color: #342b2b">
+                      <tr style="background-color: #342b2b">
+                        <th scope="col" style="
+                            background-color: #342b2b;
+                            color: white;
+                            border-bottom-left-radius: 2em;
+                            border-top-left-radius: 2em;
+                          ">
+                          Tipo
+                        </th>
+                        <th scope="col" style="background-color: #342b2b; color: white">
+                          Km/viaje
+                        </th>
+                        <th scope="col" style="background-color: #342b2b; color: white">
+                          Horas/Viaje
+                        </th>
+                        <th scope="col" style="
+                            background-color: #342b2b;
+                            color: white;
+                            border-bottom-right-radius: 2em;
+                            border-top-right-radius: 2em;
+                          ">
+                          Veces
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="
+                          let item of lstViaje
+                            | slice
+                              : (page - 1) * pageSize
+                              : (page - 1) * pageSize + pageSize
+                        ">
+                        <th scope="row">
+                          {{ item.tipoTransporte.valor_parametros }}
+                        </th>
+                        <td class="text-center">
+                          <span *ngIf="item.tipoConsumo == 'distancia'">{{
+                            item.valorConsumo
+                            }}</span>
+                        </td>
+                        <td class="text-center">
+                          <span *ngIf="item.tipoConsumo == 'tiempo'">{{
+                            item.valorConsumo
+                            }}</span>
+                        </td>
+                        <td class="text-center">{{ item.veces }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="d-flex justify-content-center" style="z-index: 0; color: black">
+                  <ngb-pagination style="z-index: 0; color: black" [collectionSize]="total" [(page)]="page"
+                    [pageSize]="pageSize">
+                  </ngb-pagination>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card nuevo">
+          <div class="card-body">
+            <div class="bot1">
+              <button type="button" class="c1" (click)="irAnterior()">
+                Anterior
+              </button>
+
+              <button type="button" class="c2" (click)="irSiguiente()">
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>
+</ion-content>

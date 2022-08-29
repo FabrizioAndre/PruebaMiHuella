@@ -1,0 +1,89 @@
+section {
+  display: none;
+  padding: 0px 0 0;
+
+}
+
+input {
+  display: none;
+}
+
+input:checked+label {
+  color: #ff0000;
+}
+
+#tab1:checked~.wr #content1 {
+  display: block;
+}
+
+#tab2:checked~.wr #content2 {
+  display: block;
+}
+
+#tab3:checked~.wr #content3 {
+  display: block;
+}
+
+#tab4:checked~.wr #content4 {
+  display: block;
+}
+
+
+
+.tb1 {
+  position: absolute;
+  bottom: 0;
+
+  position: fixed;
+  display: inline-block;
+  margin: auto;
+  background: white;
+  width: 100%;
+  height: 6%;
+}
+
+.tb2 {
+  position: absolute;
+  bottom: 0;
+
+  position: fixed;
+
+  display: inline-block;
+  left: 181px;
+}
+
+.tb3 {
+  position: absolute;
+  bottom: 0;
+  position: fixed;
+
+  left: 340px;
+}
+
+body {
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 0;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+  height: 1500px;
+}

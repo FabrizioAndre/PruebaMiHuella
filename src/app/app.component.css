@@ -1,0 +1,61 @@
+h1,
+h2 {
+  margin-left: 21rem;
+}
+
+footer {
+  background: #057445;
+  padding: 2rem;
+}
+
+.footer-text {
+  display: inline-grid;
+  margin-left: 10%;
+  color: #fafafa
+}
+
+@media only screen and (max-width: 500px) {
+
+  h1,
+  h2 {
+    margin-left: 4rem;
+    font-size: 1.5rem;
+  }
+
+  .jumbotron {
+    height: 50%;
+  }
+
+  footer {
+    padding: 0.5rem;
+    height: 80px;
+  }
+
+  .footer-text {
+    display: inline;
+    margin-left: 4%;
+
+  }
+}
+
+.caja {
+  text-align: center;
+  width: 50px;
+
+
+  font-size: 50px;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: -0.625rem 13.75rem;
+  /*     font-size: 1.1rem; */
+  font-size: 18px;
+
+
+
+  border: 0;
+  color: black;
+  background-color: #fff;
+  background-clip: padding-box;
+
+  border-radius: 0.25rem;
+
+}

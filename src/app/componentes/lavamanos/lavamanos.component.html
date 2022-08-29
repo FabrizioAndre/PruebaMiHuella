@@ -1,0 +1,322 @@
+<ion-content no-bounce class="no-scroll">
+  <div class="container col-md-6 ps-4 pe-4 mt-2">
+    <form id="habitosForm" (ngSubmit)="irSiguiente(habitosForm)" #habitosForm="ngForm">
+      <div class="justify-content-center">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="text-center">
+                Consumo de Agua en
+                <div style="white-space: pre-line"></div>
+                Servicios Higiénicos
+              </h5>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div>
+              <div class="form-group">
+                <div class="row justify-content-center">
+                  <label class="col-form-label col-form-label-sm">Veces que se lava las manos (veces/día)</label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="b1" (click)="Disminuir1()">
+                    -
+                  </button>
+
+                  <input type="text" class="caja" id="vecesLavaManos" name="vecesLavaManos"
+                    [(ngModel)]="habitos.vecesLavaManos" #vecesLavaManos="ngModel" pattern="^[0-9]{1,2}?$" maxlength="2"
+                    [ngClass]="{
+                      'is-invalid':
+                        habitosForm.submitted && vecesLavaManos.invalid
+                    }" required readonly="readonly" />
+
+                  <button type="button" class="b1" (click)="Aumentar1()">
+                    +
+                  </button>
+                </div>
+
+                <div class="row justify-content-center">
+                  <label class="col-form-label col-form-label-sm">
+                    ¿Cierra la llave al momento de lavarse las manos?</label>
+                </div>
+
+                <div class="wrapper">
+                  <div style="
+                      margin-left: 4px;
+                      z-index: 10;
+                      justify-content: center;
+                      align-items: center;
+                      display: flex;
+                      position: absolute;
+                      font-weight: 400;
+
+                      font-size: 20px;
+                      pointer-events: none;
+                    ">
+                    Si &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No
+                  </div>
+                  <input type="checkbox" id="cSwith1" checked="" name="crCierraLlave1"
+                    [(ngModel)]="habitos.cierraLavamanos" #crCierraLlave1="ngModel" />
+                </div>
+
+                <div class="row justify-content-center">
+                  <label class="col-form-label col-form-label-sm">Veces que se cepilla los dientes (veces/día)</label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="b1" (click)="Disminuir2()">
+                    -
+                  </button>
+
+                  <input type="text" class="caja" id="vecesLavaDientes" name="vecesLavaDientes"
+                    [(ngModel)]="habitos.vecesLavaDientes" #vecesLavaDientes="ngModel" min="0" pattern="^[0-9]{1,2}?$"
+                    maxlength="2" [ngClass]="{
+                      'is-invalid':
+                        habitosForm.submitted && vecesLavaDientes.invalid
+                    }" required readonly="readonly" />
+
+                  <button type="button" class="b1" (click)="Aumentar2()">
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row justify-content-center">
+                  <label class="col-form-label col-form-label-sm">Tiempo que tarda en cepillarse (minutos)</label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="b1" (click)="Disminuir3()">
+                    -
+                  </button>
+
+                  <input type="text" class="caja" id="tiempoCepilla" name="tiempoCepilla"
+                    [(ngModel)]="habitos.tiempoCepilla" #tiempoCepilla="ngModel" min="0" pattern="^[0-9]{1,2}?$"
+                    maxlength="2" [ngClass]="{
+                      'is-invalid':
+                        habitosForm.submitted && tiempoCepilla.invalid
+                    }" required readonly="readonly" />
+
+                  <button type="button" class="b1" (click)="Aumentar3()">
+                    +
+                  </button>
+                </div>
+              </div>
+
+              <div class="row justify-content-center">
+                <label class="col-form-label col-form-label-sm">¿Cierra la llave al momento de cepillarse?</label>
+              </div>
+
+              <div class="wrapper">
+                <div style="
+                    margin-left: 4px;
+                    z-index: 10;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    position: absolute;
+                    font-weight: 400;
+
+                    font-size: 20px;
+                    pointer-events: none;
+                  ">
+                  Si &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No
+                </div>
+                <input type="checkbox" id="cSwith2" checked="" name="crCierraLlave2"
+                  [(ngModel)]="habitos.cierraLlaveCepillarse" #crCierraLlave2="ngModel" />
+              </div>
+
+              <hr />
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <label class="col-form-label col-form-label-sm">Veces que usa los servicios higiénicos
+                  (veces/día)</label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="button" class="b1" (click)="Disminuir4()">
+                  -
+                </button>
+
+                <input type="text" class="caja" id="vecesUsaInodoro" name="vecesUsaInodoro"
+                  [(ngModel)]="habitos.vecesUsaInodoro" #vecesUsaInodoro="ngModel" min="0" pattern="^[0-9]{1,2}?$"
+                  maxlength="2" [ngClass]="{
+                    'is-invalid':
+                      habitosForm.submitted && vecesUsaInodoro.invalid
+                  }" required readonly="readonly" />
+
+                <button type="button" class="b1" (click)="Aumentar4()">
+                  +
+                </button>
+              </div>
+              <small [hidden]="!vecesUsaInodoro.errors?.pattern" class="text-danger">
+                Ingrese un número válido.
+              </small>
+            </div>
+
+            <div class="row justify-content-center">
+              <label class="col-form-label col-form-label-sm">¿Conoce la capacidad de descarga del inodoro?</label>
+            </div>
+
+            <div class="wrapper">
+              <div style="
+                  margin-left: 4px;
+                  z-index: 10;
+                  justify-content: center;
+                  align-items: center;
+                  display: flex;
+                  position: absolute;
+                  font-weight: 400;
+
+                  font-size: 20px;
+                  pointer-events: none;
+                ">
+                Si &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No
+              </div>
+              <input type="checkbox" id="cSwith3" checked="" name="conoceCapacidad"
+                [(ngModel)]="habitos.conoceCapacidad" #conoceCapacidad="ngModel" />
+            </div>
+
+            <div *ngIf="habitos.conoceCapacidad">
+              <div class="row justify-content-center">
+                <label class="col-form-label col-form-label-sm">Capacidad del inodoro (Litros)</label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="button" class="b1" (click)="Disminuir7()">
+                  -
+                </button>
+
+                <div>
+                  <input type="text" class="caja" id="capInodoro" name="capInodoro" [(ngModel)]="habitos.capInodoro"
+                    #capInodoro="ngModel" min="0" pattern="^[0-9]{1,2}?$" maxlength="2" [ngClass]="{
+                      'is-invalid': habitosForm.submitted && capInodoro.invalid
+                    }" required readonly="readonly" />
+                </div>
+
+                <button type="button" class="b1" (click)="Aumentar7()">
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div class="justify-content-center" *ngIf="!habitos.conoceCapacidad">
+              <div class="row justify-content-center">
+                <label class="col-form-label col-form-label-sm">Tipo de inodoro</label>
+              </div>
+
+              <div class="d-flex justify-content-center" style="margin-top: 5px">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="cr1" name="tipoInodoro" class="custom-control-input" value="boton"
+                    [(ngModel)]="habitos.tipoInodoro" #tipoInodoro="ngModel" [ngClass]="{
+                      'is-invalid': habitosForm.submitted && tipoInodoro.invalid
+                    }" required />
+                  <label class="custom-control-label" for="cr1">2 botones</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="cr2" name="tipoInodoro" class="custom-control-input" value="palanca"
+                    [(ngModel)]="habitos.tipoInodoro" #tipoInodoro="ngModel" [ngClass]="{
+                      'is-invalid': habitosForm.submitted && tipoInodoro.invalid
+                    }" required />
+                  <label class="custom-control-label" for="cr2">1 palanca</label>
+                </div>
+              </div>
+
+              <br />
+            </div>
+          </div>
+
+          <div class="col-sm">
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <label class="col-form-label col-form-label-sm">Veces que usa la ducha (veces por día)</label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="button" class="b1" (click)="Disminuir5()">
+                  -
+                </button>
+
+                <input type="text" class="caja" id="vecesUsaDucha" name="vecesUsaDucha"
+                  [(ngModel)]="habitos.vecesUsaDucha" #vecesUsaDucha="ngModel" min="0" pattern="^[0-9]{1,2}?$"
+                  maxlength="2" [ngClass]="{
+                    'is-invalid': habitosForm.submitted && vecesUsaDucha.invalid
+                  }" required readonly="readonly" />
+
+                <button type="button" class="b1" (click)="Aumentar5()">
+                  +
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row justify-content-center">
+                <label class="col-form-label col-form-label-sm">
+                  Tiempo que tarda en ducharse (minutos)</label>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button type="button" class="b1" (click)="Disminuir6()">
+                  -
+                </button>
+
+                <input type="text" class="caja" id="tiempoDucha" name="tiempoDucha" [(ngModel)]="habitos.tiempoDucha"
+                  #tiempoDucha="ngModel" min="0" pattern="^[0-9]{1,2}?$" maxlength="2" [ngClass]="{
+                    'is-invalid': habitosForm.submitted && tiempoDucha.invalid
+                  }" required readonly="readonly" />
+
+                <button type="button" class="b1" (click)="Aumentar6()">
+                  +
+                </button>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <label class="col-form-label col-form-label-sm">
+                ¿Cierra la llave de la ducha en algún momento?</label>
+            </div>
+
+            <div class="wrapper">
+              <div style="
+                  margin-left: 4px;
+                  z-index: 10;
+                  justify-content: center;
+                  align-items: center;
+                  display: flex;
+                  position: absolute;
+                  font-weight: 400;
+
+                  font-size: 20px;
+                  pointer-events: none;
+                ">
+                Si &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No
+              </div>
+              <input type="checkbox" id="cSwith4" checked="" name="cierreLlaveDucha"
+                [(ngModel)]="habitos.cierreLlaveDucha" #cierreLlaveDucha="ngModel" />
+            </div>
+          </div>
+
+          <hr />
+          <app-alert></app-alert>
+        </div>
+
+        <div class="card nuevo" style="z-index: 30">
+          <div class="card-body">
+            <div class="bot1">
+              <button type="button" class="c1" (click)="irAnterior()">
+                Anterior
+              </button>
+
+              <button type="submit" class="c2">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <br /><br /><br />
+</ion-content>

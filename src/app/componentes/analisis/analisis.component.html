@@ -1,0 +1,60 @@
+<ion-app>
+  <ion-content>
+    <div class="container">
+      <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <div class="titulo">
+        <br />
+        Mi Análisis
+      </div>
+      <div class="card" style="border: 0; margin-left: 2%; margin-right: 2%">
+        <div class="card-body">
+          <div class="bot1">
+            <button type="button" style="outline: none" routerLink="/analisis" class="d1">
+              Mi Huella de Carbono
+            </button>
+            <button type="button" style="outline: none" class="d2" routerLink="/nuevotab4">
+              Mi Huella Hídrica
+            </button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="+totalEmisiones > 0" style="margin-top: -21px">
+        <app-hcarbono></app-hcarbono>
+      </div>
+
+      <div *ngIf="+totalEmisiones == 0">
+        <div style="
+            margin-top: 15%;
+            margin-right: 10%;
+            margin-left: 10%;
+            
+          ">
+          <label>Usted no ha realizado su calculo Huella de Carbono, por favor
+            realícela
+            <label style="color: #07ce32" (click)="goStartHC()">
+              aquí
+            </label>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <body>
+      <div class="navbar">
+        <div class="container" style="flex-direction: row">
+          <a routerLink="/">
+            <i style="color: #cbcbcb; margin-left: 48px" class="fa-solid fa-house"></i></a>
+          <a routerLink="/analisis">
+            <img class="rotate" [ngStyle]="{ height: '50px' }" src="../assets/img/pie-chart.png" />
+          </a>
+          <a routerLink="/alwa"><i style="color: #cbcbcb; margin-right: 48px" class="fas fa-info-circle"></i></a>
+        </div>
+      </div>
+    </body>
+    <br />
+    <br /><br />
+    <style>
+    </style>
+  </ion-content>
+</ion-app>

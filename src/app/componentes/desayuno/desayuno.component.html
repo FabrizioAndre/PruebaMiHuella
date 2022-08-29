@@ -1,0 +1,324 @@
+<ion-content>
+  <div class="container col-md-6 ps-4 pe-4 mt-2">
+    <form id="alimentosForm" (ngSubmit)="irSiguiente(alimentosForm)" #alimentosForm="ngForm">
+      <div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4 class="text-center">
+                Consumo de alimentos y bebidas a la semana
+              </h4>
+            </div>
+          </div>
+          <br />
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    <img style="height: 40px; width: 40px" src="../assets/img/cafe.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+                    <button type="button" class="b1" (click)="Disminuir2()">
+                      -
+                    </button>
+                    <input type="text"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      class="caja" id="cafe" name="cafe" [(ngModel)]="desayuno.cafe" #cafe="ngModel" maxlength="2"
+                      pattern="^[0-9]{1,2}?$" readonly="readonly" />
+                    <button type="button" class="b1" (click)="Aumentar2()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Café (Tazas)</label></td>
+                </tr>
+
+                <tr>
+                  <td><br /></td>
+                  <td>
+                    <img style="height: 40px; width: 40px" src="../assets/img/leche.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+                    <button type="button" class="b1" (click)="Disminuir()">
+                      -
+                    </button>
+                    <input type="text" class="caja"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      class="caja" id="leche" name="leche" [(ngModel)]="desayuno.leche" #leche="ngModel" maxlength="2"
+                      pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="Aumentar()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Leche (Tazas)</label></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    <img style="height: 40px; width: 40px" src="../assets/img/pan-blanco.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+                    <button type="button" class="b1" (click)="Disminuir1()">
+                      -
+                    </button>
+                    <input type="text"
+                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                      class="caja" id="pan" name="pan" [(ngModel)]="desayuno.pan" #pan="ngModel" maxlength="2"
+                      pattern="^[0-9]{1,2}?$" readonly="readonly" />
+                    <button type="button" class="b1" (click)="Aumentar1()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Pan (Rebanadas)</label></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col">
+                <h6 style="
+                    margin-left: 15px;
+                    font-weight: 600;
+
+                  ">
+                  Porciones
+                </h6>
+              </div>
+            </div>
+
+            <table style="margin-bottom: 11px">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/res.png" />
+                  </td>
+
+                  <td class="abs">
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirRes()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="res" name="res" [(ngModel)]="almuerzo.res" #res="ngModel"
+                      maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarRes()">
+                      +
+                    </button>
+                  </td>
+
+                  <td class="abs1">&nbsp; <label>Res</label></td>
+                </tr>
+                <tr>
+                  <td><br /></td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/pollo.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirPo()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="pollo" name="pollo" [(ngModel)]="almuerzo.pollo"
+                      #pollo="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarPo()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Pollo</label></td>
+                </tr>
+                <tr>
+                  <td><br /></td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/pez.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirPes()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="pescado" name="pescado" [(ngModel)]="almuerzo.pescado"
+                      #pescado="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarPes()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Pescado </label></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/cerdos.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+                    <button type="button" class="b1" (click)="DisminuirCer()">
+                      -
+                    </button>
+                    <input type="text" class="caja" id="cerdo" name="cerdo" [(ngModel)]="almuerzo.cerdo"
+                      #cerdo="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+                    <button type="button" class="b1" (click)="AumentarCer()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Cerdo</label></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/arroz.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+                    <button type="button" class="b1" (click)="DisminuirAr()">
+                      -
+                    </button>
+                    <input type="text" class="caja" id="arroz" name="arroz" [(ngModel)]="almuerzo.arroz"
+                      #arroz="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+                    <button type="button" class="b1" (click)="AumentarAr()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Arroz</label></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <small style="
+
+                margin-left: 17px;
+
+                font-weight: 400;
+                margin-top: 170px;
+                color: #0066d3;
+              "><i class="fas fa-info-circle" style="color: #0066d3"></i> Peso
+              aproximado de una porción: 125 g.</small>
+
+            <table>
+              <tbody>
+                <br />
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/cerveza.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirCerv()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="cerveza" name="cerveza" [(ngModel)]="bebida.cerveza"
+                      #cerveza="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarCerv()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Cerveza (Vasos)</label></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/sodas.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirGas()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="gaseosa" name="gaseosa" [(ngModel)]="bebida.gaseosa"
+                      #gaseosa="ngModel" maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarGas()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Gaseosa (Vasos)</label></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/vino.png" />
+                  </td>
+                  <td class="abs">
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirVi()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="vino" name="vino" [(ngModel)]="bebida.vino" #vino="ngModel"
+                      maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarVi()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Vino (Copas)</label></td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>
+                    &nbsp;<img style="height: 40px; width: 40px" src="../assets/img/pisco.png" />
+                  </td>
+                  <td>
+                    &nbsp;
+
+                    <button type="button" class="b1" (click)="DisminuirPi()">
+                      -
+                    </button>
+
+                    <input type="text" class="caja" id="pisco" name="pisco" [(ngModel)]="bebida.pisco" #pisco="ngModel"
+                      maxlength="2" pattern="^[0-9]{1,2}?$" readonly="readonly" />
+
+                    <button type="button" class="b1" (click)="AumentarPi()">
+                      +
+                    </button>
+                  </td>
+                  <td class="abs1">&nbsp; <label>Pisco (Copas)</label></td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <br /><br /><br />
+      </div>
+      <div class="card nuevo">
+        <div class="card-body">
+          <div class="bot1">
+            <button type="button" class="c1" (click)="irAnterior()">
+              Anterior
+            </button>
+            <button type="submit" class="c2">Siguiente</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

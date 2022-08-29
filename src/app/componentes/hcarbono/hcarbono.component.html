@@ -1,0 +1,372 @@
+<div id="capture" style="background-color: white">
+  <br />
+  <div class="card" style="
+      box-shadow: 0px 4px 6px 6px rgba(217, 217, 217, 0.48);
+      border: 0;
+      margin-left: 6%;
+      margin-right: 6%;
+      border-radius: 20px;
+      background-image: linear-gradient(90deg, #9ded77, #58e176);
+    ">
+    <div class="card-body">
+      <h4 style="
+          margin-top: -5px;
+          
+          font-weight: 800;
+        ">
+        Has generado:
+      </h4>
+
+      <div class="d-flex justify-content-start">
+        <div class="align-self-end result">
+          <h1 class="result">
+            <strong>{{ totalEmisiones }}</strong>
+          </h1>
+        </div>
+
+        <div>
+          <h1 class="result2" style="margin-top: 43px; font-weight: 800">
+            <strong>tCO<sub>2</sub>e</strong>
+          </h1>
+        </div>
+      </div>
+
+      <div *ngIf="!view">
+        <p class="card-text" style=" font-weight: 800">
+          Se encuentra por encima del promedio per cápita nacional
+        </p>
+      </div>
+
+      <div *ngIf="view">
+        <p class="card-text" style=" font-weight: 800">
+          Se encuentra por debajo del promedio per cápita nacional
+        </p>
+      </div>
+
+      <p class="franja" style="
+          color: #0066d3 !important;
+          margin-top: 10px;
+          
+        ">
+        <i class="fas fa-info-circle"></i> Per cápita nacional: 5.44 tCO<sub>2</sub>
+        e/persona
+      </p>
+    </div>
+  </div>
+
+  <div class="family">
+    <div>
+      <div [ngStyle]="{ color: 'black' }"></div>
+
+      <div [ngStyle]="{
+          background: 'white',
+          border: '1px',
+          'border-radius': '20px',
+          'margin-right': '30px',
+          'margin-left': '30px',
+          'margin-top': '4%'
+        }">
+        <canvas style="margin-top: 49px" id="myChartHC" height="85vh" width="100vw"></canvas>
+
+        <br />
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h4 class="text-center" style=" font-weight: 800">
+            Porcentajes
+          </h4>
+        </div>
+      </div>
+
+      <div [ngStyle]="{
+          border: '1px',
+          'border-radius': '20px',
+          'margin-right': '30px',
+          'margin-left': '30px'
+        }">
+        <br />
+
+        <table class="t2" style="margin: 0 auto; font-size: 18px">
+          <tbody style="font-size: 18px">
+            <tr *ngIf="resultadoGEI.electricidad > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #f9ea67;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Electricidad</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.electricidad }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.agua > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #87e0ff;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Agua</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.agua }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.carbon > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #342b2b;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Carbón</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.carbon }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.alimentos > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #58e176;
+                  "></div>
+              </td>
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Alimentos</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.alimentos }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.glp > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #b951ff;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;GLP</div>
+              </td>
+
+              <td class="iz">
+                <div>{{ resultadoGEI.glp }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.gn > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #9ded77;
+                  "></div>
+              </td>
+
+              <td>
+                <div>&nbsp;&nbsp;GN</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.gn }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.vehicPropio > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #ed7777;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Vehículo</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.vehicPropio }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.trPublico > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #5d85e8;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Trans. público</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.trPublico }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.taxi > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #ecc334;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Taxi</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.taxi }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.trInterprov > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #032390;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Viajes</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.trInterprov }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.trAereo > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #7ab1eb;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;Vuelos</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.trAereo }} %</div>
+              </td>
+            </tr>
+
+            <tr *ngIf="resultadoGEI.rrss > 0">
+              <td>
+                <div style="
+                    width: 24px;
+                    height: 24px;
+                    min-width: 24px;
+                    min-height: 24px;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                    background: #e966dc;
+                  "></div>
+              </td>
+
+              <td class="iz2">
+                <div>&nbsp;&nbsp;RRSS</div>
+              </td>
+              <td class="iz">
+                <div>{{ resultadoGEI.rrss }} %</div>
+              </td>
+            </tr>
+          </tbody>
+
+          <tbody>
+            <br />
+          </tbody>
+        </table>
+
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="xyz">
+  <button type="button" (click)="Compartir()" style="font-size: 20px; color: gray"
+    class="btn btn-light btn-circle btn-xl">
+    <img style="width: 50px" src="../assets/img/share.svg" />
+  </button>
+</div>
+
+<br />

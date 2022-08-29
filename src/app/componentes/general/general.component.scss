@@ -1,0 +1,21 @@
+label {
+  padding-left: calc(0.25rem + 8px);
+}
+
+
+small {
+  font-weight: 300;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("/assets/img/Flecha.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: 13px;
+
+
+}
