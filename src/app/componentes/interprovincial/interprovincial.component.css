@@ -163,6 +163,7 @@ ngb-pagination ::ng-deep .page-item.active .page-link:focus,
   box-shadow: none !important;
 }
 
-ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
+/* ngb-pagination ::ng-deep .page-link:not(:disabled):not(.disabled):active:focus {
   box-shadow: none !important;
 }
+ */
